@@ -1,8 +1,19 @@
+"use client";
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 
 export default function Register() {
+  const [authState, setAuthState] = useState({
+    name:"",
+    email:"",
+    password:"",
+    password_confirmation:""
+  })
+
+  const submitForm =()=>{
+    console.log('The auth state is ', authState)
+  }
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-full w-full">
@@ -19,7 +30,7 @@ export default function Register() {
                Login
               </Link>
             </p>
-            <form action="#" method="POST" className="mt-8">
+            <form onClick={submitForm} action="#" method="POST" className="mt-8">
               <div className="space-y-5">
                  
               <div>
@@ -32,6 +43,9 @@ export default function Register() {
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="name"
                       placeholder="name"
+                      onChange={(e)=>setAuthState({
+                        ...authState,name:e.target.value
+                      })}
                     ></input>
                   </div>
                 </div>
@@ -47,6 +61,9 @@ export default function Register() {
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
+                      onChange={(e)=>setAuthState({
+                        ...authState,email:e.target.value
+                      })}
                     ></input>
                   </div>
                 </div>
@@ -70,6 +87,9 @@ export default function Register() {
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
+                      onChange={(e)=>setAuthState({
+                        ...authState,password:e.target.value
+                      })}
                     ></input>
                   </div>
                 </div>
@@ -86,6 +106,9 @@ export default function Register() {
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
+                      onChange={(e)=>setAuthState({
+                        ...authState,password_confirmation:e.target.value
+                      })}
                     ></input>
                   </div>
                 </div>
